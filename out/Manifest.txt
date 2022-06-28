@@ -1,0 +1,1 @@
+Task2-class: by.devincubator.task2.Task2
