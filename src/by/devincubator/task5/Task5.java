@@ -7,20 +7,19 @@ public class Task5 {
                 System.out.println("Monitoring of general indicators has started!");
             }
         };
-        monitoringModule.startMonitoring();
-
         ErrorMonitoringModule errorMonitoringModule = new ErrorMonitoringModule() {
             public void startMonitoring() {
                 System.out.println("Bug tracking monitoring has started!");
             }
         };
-        errorMonitoringModule.startMonitoring();
-
         SecurityModule securityModule = new SecurityModule() {
             public void startMonitoring() {
                 System.out.println("Security monitoring has started!");
             }
         };
+
+        monitoringModule.startMonitoring();
+        errorMonitoringModule.startMonitoring();
         securityModule.startMonitoring();
     }
 }
