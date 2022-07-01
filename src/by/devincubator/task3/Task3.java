@@ -7,7 +7,6 @@ public class Task3 {
     private static final String HELLO_USER_HOW_ARE_YOU = "Hello, user! How are you?";
 
     public static void main(String[] args) {
-
         TextEditor textEditor = new TextEditor();
         String string;
         Scanner scanner = new Scanner(System.in);
