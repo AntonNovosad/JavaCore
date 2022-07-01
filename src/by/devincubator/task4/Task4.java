@@ -18,10 +18,10 @@ public class Task4 {
     }
 
     private static void findDay(Weekdays[] array, int number) {
-        if (checkDay(number) && checkWeekend(number)) {
-            System.out.println(array[number - 1] + printAbbreviatedName(number) + IS_A_WEEKEND);
-        } else if (checkDay(number) && !checkWeekend(number)) {
-            System.out.println(array[number - 1] + printAbbreviatedName(number) + IS_NOT_A_WEEKEND);
+        if (checkDay(number) && array[number - 1].isWeekend()) {
+            System.out.println(array[number - 1] + array[number - 1].getShortName() + IS_A_WEEKEND);
+        } else if (checkDay(number) && !array[number - 1].isWeekend()) {
+            System.out.println(array[number - 1] + array[number - 1].getShortName() + IS_NOT_A_WEEKEND);
         } else {
             System.out.println(number);
         }
@@ -29,18 +29,5 @@ public class Task4 {
 
     private static boolean checkDay(int number) {
         return number > 0 && number < 8;
-    }
-
-    private static boolean checkWeekend(int number) {
-        return number > 5 && number < 8;
-    }
-
-    private static AbbreviatedName[] createAbbreviatedArray() {
-        return AbbreviatedName.values();
-    }
-
-    private static String printAbbreviatedName(int number) {
-        AbbreviatedName[] array = createAbbreviatedArray();
-        return " (" + array[number - 1] + ")";
     }
 }
