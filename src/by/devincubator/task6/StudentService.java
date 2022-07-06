@@ -14,21 +14,9 @@ public class StudentService {
     }
 
     public Student createStudent() {
-        String lastName;
-        String firstName;
-        double gradePointAverage;
-
-        System.out.println("Enter last name: ");
-        lastName = scanner.nextLine();
-
-        System.out.println("Enter first name: ");
-        firstName = scanner.nextLine();
-
-        do {
-            System.out.println("Enter grade point average: ");
-            gradePointAverage = Double.parseDouble(scanner.nextLine());
-        } while (checkNumber(gradePointAverage));
-
+        String lastName = inputText("Enter last name: ");
+        String firstName = inputText("Enter first name: ");
+        double gradePointAverage = inputGradePoint();
         return new Student(lastName, firstName, gradePointAverage);
     }
 
@@ -53,5 +41,19 @@ public class StudentService {
 
     private boolean checkNumber(double number) {
         return number < 0 || number >= 10;
+    }
+
+    private String inputText(String text) {
+        System.out.println(text);
+        return scanner.nextLine();
+    }
+
+    private double inputGradePoint() {
+        double gradePointAverage;
+        do {
+            System.out.println("Enter grade point average: ");
+            gradePointAverage = Double.parseDouble(scanner.nextLine());
+        } while (checkNumber(gradePointAverage));
+        return gradePointAverage;
     }
 }
