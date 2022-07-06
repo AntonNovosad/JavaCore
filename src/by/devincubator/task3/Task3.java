@@ -3,57 +3,97 @@ package by.devincubator.task3;
 import java.util.Scanner;
 
 public class Task3 {
-
     private static final String HELLO_USER_HOW_ARE_YOU = "Hello, user! How are you?";
+    private static final Scanner scanner = new Scanner(System.in);
+    private static final TextEditor textEditor = new TextEditor();
+    private static String string;
 
     public static void main(String[] args) {
-        TextEditor textEditor = new TextEditor();
-        String string;
-        Scanner scanner = new Scanner(System.in);
+        append();
+        insert();
+        delete();
+        replace();
 
+        reverseText();
+        deleteSpaces();
+
+        findUpperCase("hhh Y m OooO");
+        findUpperCase("HellO FrienD");
+        findUpperCase("YoU NEveR Be ALONe");
+        findUpperCase("New Year Tree");
+
+        upperCase("ahahahah");
+        upperCase("hello");
+        upperCase("Friends");
+        upperCase("Wow");
+
+        fillEmptyArray();
+
+        stringComparison();
+    }
+
+    private static void append() {
         textEditor.printMessage(HELLO_USER_HOW_ARE_YOU, "append", "Fine!");
         string = textEditor.append(HELLO_USER_HOW_ARE_YOU, scanner.nextLine());
         System.out.println(string);
+    }
 
+    private static void insert() {
         textEditor.printMessage(HELLO_USER_HOW_ARE_YOU, "insert", "dear");
         string = textEditor.insert(HELLO_USER_HOW_ARE_YOU, 5, scanner.nextLine());
         System.out.println(string);
+    }
 
+    private static void delete() {
         textEditor.printMessage(HELLO_USER_HOW_ARE_YOU, "delete", "!");
         string = textEditor.delete(HELLO_USER_HOW_ARE_YOU, scanner.nextLine());
         System.out.println(string);
+    }
 
+    private static void replace() {
         textEditor.printMessage(HELLO_USER_HOW_ARE_YOU, "replace", "user");
         string = textEditor.replace(HELLO_USER_HOW_ARE_YOU, "user", scanner.nextLine());
         System.out.println(string);
+    }
 
+    private static void reverseText() {
+        System.out.println("Enter text for reverse: ");
         string = textEditor.reverseText(scanner.nextLine());
         System.out.println(string);
+    }
 
+    private static void deleteSpaces() {
+        System.out.println("Enter text with spaces: ");
         string = textEditor.deleteSpaces(scanner.nextLine());
         System.out.println(string);
+    }
 
-        System.out.println(textEditor.findUpperCase("hhh Y m OooO"));
-        System.out.println(textEditor.findUpperCase("HellO FrienD"));
-        System.out.println(textEditor.findUpperCase("YoU NEveR Be ALONe"));
-        System.out.println(textEditor.findUpperCase("New Year Tree"));
+    private static void findUpperCase(String text) {
+        System.out.println(textEditor.findUpperCase(text));
+    }
 
-        System.out.println(textEditor.upperCase("ahahahah"));
-        System.out.println(textEditor.upperCase("hello"));
-        System.out.println(textEditor.upperCase("Friends"));
-        System.out.println(textEditor.upperCase("Wow"));
+    private static void upperCase(String text) {
+        System.out.println(textEditor.upperCase(text));
+    }
 
-        System.out.println("Enter array size");
+    private static String[] createArray() {
+        System.out.println("Enter array size: ");
         int size = Integer.parseInt(scanner.nextLine());
-        String[] stringArray = new String[size];
-        System.out.println("Fill array");
+        return new String[size];
+    }
+
+    private static void fillEmptyArray() {
+        String[] stringArray = createArray();
+        System.out.println("Fill array: ");
         for (int i = 0; i < stringArray.length; i++) {
             stringArray[i] = textEditor.fillEmpty(scanner.nextLine());
         }
         for (String s : stringArray) {
             System.out.println(s);
         }
+    }
 
+    private static void stringComparison() {
         String str1 = "Java";
         String str2 = "JAVA";
         String str3 = "C#";
