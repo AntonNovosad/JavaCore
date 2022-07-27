@@ -5,14 +5,14 @@ import java.util.Map;
 import java.util.Set;
 
 public class MyHashMap<K, V> implements Map<K, V> {
-    private final int MIN_INITIAL_CAPACITY = 16;
+    private static final int MIN_INITIAL_CAPACITY = 16;
     private Node<K, V>[] table;
     private int size;
     private int capacity;
 
     public MyHashMap() {
-        size = MIN_INITIAL_CAPACITY;
-        table = new Node[size];
+        capacity = MIN_INITIAL_CAPACITY;
+        table = new Node[capacity];
     }
 
     static class Node<K, V> implements Map.Entry<K, V> {
@@ -29,12 +29,12 @@ public class MyHashMap<K, V> implements Map<K, V> {
         }
 
         @Override
-        public final K getKey() {
+        public K getKey() {
             return key;
         }
 
         @Override
-        public final V getValue() {
+        public V getValue() {
             return value;
         }
 
@@ -74,7 +74,7 @@ public class MyHashMap<K, V> implements Map<K, V> {
     @Override
     public V put(K key, V value) {
         int hash = hash(key);
-        int index = hash % size;
+        int index = hash % capacity;
         if (table[index] == null) {
             table[index] = newNode(hash, key, value, null);
             size++;
@@ -141,8 +141,7 @@ public class MyHashMap<K, V> implements Map<K, V> {
     }
 
     private int hash(Object key) {
-        int h;
-        return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
+        return (key == null) ? 0 : key.hashCode();
     }
 
     @Override
